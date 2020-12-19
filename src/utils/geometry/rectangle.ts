@@ -105,14 +105,14 @@ export class Rectangle {
 
 
     // create a box of two points
-    static RectangleOnTwoPoints(point0: Point, point1: Point) {
+    static rectanglePointPoint(point0: Point, point1: Point) {
         let r = new Rectangle(point0.x, point0.y, point0.x, point0.x);
         r.Add(point1);
         return r;
     }
 
     // create rectangle from a point
-    static RectangleOnPoint(point: Point) {
+    static RectanglePoint(point: Point) {
         return new Rectangle(point.x, point.y, point.x, point.x);
     }
 
@@ -291,7 +291,8 @@ export class Rectangle {
     // Returns the intersection of two rectangles.
     static Intersect(rect1: Rectangle, rect2: Rectangle): Rectangle {
         if (rect1.Intersects(rect2))
-            return Rectangle.RectangleOnTwoPoints(new Point(Math.max(rect1.Left, rect2.Left), Math.max(rect1.Bottom, rect2.Bottom)),
+            return Rectangle.rectanglePointPoint(
+                new Point(Math.max(rect1.Left, rect2.Left), Math.max(rect1.Bottom, rect2.Bottom)),
                 new Point(Math.min(rect1.Right, rect2.Right), Math.min(rect1.Top, rect2.Top)));
         return Rectangle.CreateEmptyRectangle();
     }
@@ -313,7 +314,7 @@ export class Rectangle {
     }
 
     Clone(): Rectangle {
-        return Rectangle.RectangleOnTwoPoints(this.LeftTop, this.RightBottom);
+        return Rectangle.rectanglePointPoint(this.LeftTop, this.RightBottom);
     }
 
 

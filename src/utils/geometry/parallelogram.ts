@@ -1,4 +1,4 @@
-import { Point, parallelWithinEpsilon, dot } from "./point";
+import { Point, dot } from "./point";
 
 export enum VertexId { Corner, VertexA, otherCorner, VertexB }
 
@@ -78,7 +78,7 @@ export function intersect(parallelogram0: Parallelogram, parallelogram1: Paralle
         return true;
 
 
-    if (!parallelWithinEpsilon(parallelogram0.otherCorner.minus(parallelogram0.corner),
+    if (!Point.parallelWithinEpsilon(parallelogram0.otherCorner.minus(parallelogram0.corner),
         parallelogram1.otherCorner.minus(parallelogram1.corner), 1.0E-5))
         return true
 
@@ -185,7 +185,7 @@ function separByA(p0: Parallelogram, p1: Parallelogram) {
 }
 
 /// create a Parallelogram over a group
-function GetParallelogramOfAGroup(boxes: [Parallelogram]) {
+export function GetParallelogramOfAGroup(boxes: [Parallelogram]) {
     let minx = 0, maxx = 0, miny = 0, maxy = 0
     let firstTime = true;
     for (let b of boxes) {

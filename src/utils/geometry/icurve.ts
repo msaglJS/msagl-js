@@ -6,7 +6,7 @@ import { Rectangle } from "./rectangle"
 /// are BSpline,Curve,LineSeg, Ellipse,CubicBezierSeg and ArrowTipCurve.
 export interface ICurve {
     /// Returns the point on the curve corresponding to parameter t
-    value(t: number): number;
+    value(t: number): Point;
     /// first derivative at t
     Derivative(t: number): Point;
     /// second derivative
@@ -47,8 +47,6 @@ export interface ICurve {
 
     /// this[Reverse[t]]=this[ParEnd+ParStart-t]
     Reverse(): ICurve;
-
-
 
     /// Offsets the curve in the direction of dir
     OffsetCurve(offset: number, dir: Point): ICurve;
